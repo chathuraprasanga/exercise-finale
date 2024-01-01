@@ -27,6 +27,7 @@ const objects = [
 const pageSize = 5;
 let currentPage = 1;
 let slideIndex = 1;
+let nextButtonClicks = 0;
 
 // Selected checkboxes - edited
 let selectedCheckboxes = [];
@@ -50,6 +51,7 @@ function updateTable() {
     updateCloseButtonVisibility();
     addCheckboxEventListeners();
 }
+
 
 // Set pagination to database table - updated
 function updatePaginationInfo() {
@@ -100,14 +102,14 @@ function updateCloseButtonVisibility() {
 
 // Add event listeners for input changes - updated
 document.getElementById("filter-input").addEventListener("input", function () {
-    currentPage = 1; 
+    currentPage = 1;
     updateTable();
 });
 
 // Function to remember selected checkboxes - edited
 function addCheckboxEventListeners() {
     const checkboxes = document.getElementsByName("selectedObject");
-    
+
     checkboxes.forEach(checkbox => {
         checkbox.addEventListener("change", function () {
             if (this.checked) {
@@ -124,41 +126,62 @@ function clearSelectedCheckboxes() {
     selectedCheckboxes = [];
 }
 
-// slide changing function
-function showSlides() {
-    const slides = document.querySelector('.slides');
-    const dots = document.querySelectorAll('.dot');
+// slide changing function - updated
+function showSlide(n) {
+    const slides = document.getElementsByClassName('slide');
+    const dots = document.getElementsByClassName('dot');
 
-    if (slideIndex > slides.children.length) {
+    if (n > slides.length) {
         slideIndex = 1;
-    }
-    if (slideIndex < 1) {
-        slideIndex = slides.children.length;
+    } else if (n < 1) {
+        slideIndex = slides.length;
     }
 
-    slides.style.transform = `translateX(${-100 * (slideIndex - 1)}%)`;
+    for (let i = 0; i < slides.length; i++) {
+        slides[i].style.display = 'none';
+    }
 
-    // Update dots
-    dots.forEach(dot => dot.classList.remove('active'));
-    dots[slideIndex - 1].classList.add('active');
+    for (let i = 0; i < dots.length; i++) {
+        dots[i].classList.remove('active');
+
+        if (i < slideIndex - 1) {
+            dots[i].classList.add('deactive-dot');
+        } else {
+            dots[i].classList.remove('deactive-dot');
+        }
+    }
+
+    slides[slideIndex - 1].style.display = 'block';
+    dots[slideIndex - 1].classList.add('active-dot');
 }
 
-// next slide function
+//next slide - updated
 function nextSlide() {
-    const nextBtn = document.getElementById('next-page-btn')
-    slideIndex += 1;
-    if (slideIndex === 3) {
-        hideAllDivs()
-        nextBtn.textContent = 'Create job'
+    const nextButton = document.getElementById('next-page-btn');
+
+    if (nextButtonClicks < 2) {
+        nextButtonClicks++;
+        plusSlides(1);
+    } else {
+        location.reload();
     }
-    if (slideIndex === 4) {
-        document.querySelector(".popup").classList.remove("active");
-        // alert('Job Created')
-        window.location.reload();
+
+    // next btn text changing
+    if (nextButtonClicks === 2) {
+        nextButton.textContent = "Create Job";
     }
-    showSlides();
-    setCarouselHeight();
 }
+
+// switch to next slide
+function plusSlides(n) {
+    showSlide(slideIndex += n);
+}
+
+// set the current slide
+function currentSlide(n) {
+    showSlide(slideIndex = n);
+}
+
 
 // appear template function
 function handleOptionChange() {
@@ -195,16 +218,18 @@ function handleRadioClick(selectedRadioId) {
     }
 }
 
-
+// handle option
 document.getElementById("select-option").addEventListener("change", handleOptionChange);
 
-// Initial hideAllDivs 
+// initial hideAllDivs 
 hideAllDivs();
 
-// Initial table update
+// initial table update
 updateTable();
 
-// Initial slide display
-showSlides();
+// initial slide display - updated
+showSlide(slideIndex);
+
+
 
 

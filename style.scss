@@ -1,5 +1,6 @@
 // index page and button 
 body {
+    margin: 0;
     background-color: #333333;
     font-family: Arial, Helvetica, sans-serif;
 }
@@ -56,12 +57,14 @@ body {
 
 
 //main container and carousel
-.main-container {
+.slider-container {
     border: 1px solid #ddd;
     width: 598px;
-    height: fit-content;
+    height: auto;
     padding-bottom: 5px;
-    border-radius: 0px;
+    height: 80%;
+    // display: flex;
+    // border: 1px solid red;
 }
 
 .carousel {
@@ -69,21 +72,23 @@ body {
     overflow: hidden;
     height: auto;
     position: relative;
-    height: auto;
+
 }
 
-.slides {
+.slider {
     display: flex;
-    height: fit-content;
+    height: auto;
     position: relative;
+    flex-direction: row;
+    width: 100%;
 }
 
 .slide {
     min-width: 100%;
     box-sizing: border-box;
-    height: auto;
     overflow: hidden;
-    height: fit-content;
+    display: none;
+    flex: 0 0 100%;
 }
 
 .slide::-webkit-scrollbar {
@@ -92,7 +97,7 @@ body {
 }
 
 .content {
-    height: fit-content;
+    height: auto;
 }
 
 
@@ -354,11 +359,18 @@ td {
     border-radius: 8px;
 }
 
-.carousel-dots {
+.free {
+    // display: flex;
+    justify-content: space-around;
+
+}
+
+.dots-container {
+    margin-left: 260px;
+    margin-right: auto;
     display: flex;
-    justify-content: center;
+    text-align: center;
     margin-top: 10px;
-    margin-left: 80px;
 }
 
 .dot {
@@ -369,8 +381,14 @@ td {
     margin: 0 5px;
 }
 
-.dot.active {
+.active-dot {
     background-color: #41bcff;
+}
+
+.deactive-dot {
+    background-color: #ddd;
+    pointer-events: none;
+    cursor: not-allowed;
 }
 
 
@@ -393,6 +411,6 @@ td {
     cursor: pointer;
 }
 
-.next-page-btn:hover{
+.next-page-btn:hover {
     font-weight: bold;
 }

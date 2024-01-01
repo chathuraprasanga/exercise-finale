@@ -24,181 +24,179 @@
 
     <!-- popup window -->
     <div class="popup">
+
+        <!-- header -->
         <div class="header">
             <div class="title">New Job</div>
             <div class="modal-close-btn"><i class="fa fa-times" aria-hidden="true" onclick="closeModal()"></i></div>
         </div>
 
         <!-- main conatiner which slides include -->
-        <div class="main-container">
+        <div class="slider-container">
 
-            <div class="carousel">
-                <div class="slides">
 
-                    <!-- first slide content -->
-                    <div class="slide" id="slide1">
-                        <div class="sub-header">
-                            <div class="topic">Select client</div>
-                            <div class="input-container">
-                                <input type="text" id="filter-input" placeholder="Search">
-                                <span class="search-icon"><i class="fa fa-search" aria-hidden="true"></i></span>
-                                <span class="close-button" onclick="clearFilter()"><i class="fa fa-times"
-                                        aria-hidden="true"></i></span>
-                            </div>
-                        </div>
+            <div class="slider">
 
-                        <div class="table">
-                            <table id="object-table">
-                                <!-- Table content will be added dynamically using JavaScript -->
-                            </table>
-                        </div>
-
-                        <div id="pagination-container">
-                            <div id="pagination-info"></div>
-                            <div id="pagination-buttons">
-                                <button><i class="fa fa-fast-backward" aria-hidden="true"
-                                        onclick="firstPage()"></i></button>
-                                <button onclick="previousPage()"><i class="fa fa-backward"
-                                        aria-hidden="true"></i></button>
-                                <button onclick="nextPage()"><i class="fa fa-forward" aria-hidden="true"></i></button>
-                                <button onclick="lastPage()"><i class="fa fa-fast-forward"
-                                        aria-hidden="true"></i></button>
-                            </div>
+                <!-- first slide content -->
+                <div class="slide active" id="slide1">
+                    <div class="sub-header">
+                        <div class="topic">Select client</div>
+                        <div class="input-container">
+                            <input type="text" id="filter-input" placeholder="Search">
+                            <span class="search-icon"><i class="fa fa-search" aria-hidden="true"></i></span>
+                            <span class="close-button" onclick="clearFilter()"><i class="fa fa-times"
+                                    aria-hidden="true"></i></span>
                         </div>
                     </div>
 
-                    <!-- second slide content -->
-                    <div class="slide" id="slide2">
-                        <div class="content">
-                            <div class="sub-header">
-                                <div class="topic">Select a template</div>
+                    <div class="table">
+                        <table id="object-table">
+                            <!-- Table content will be added dynamically using JavaScript -->
+                        </table>
+                    </div>
+
+                    <div id="pagination-container">
+                        <div id="pagination-info"></div>
+                        <div id="pagination-buttons">
+                            <button><i class="fa fa-fast-backward" aria-hidden="true"
+                                    onclick="firstPage()"></i></button>
+                            <button onclick="previousPage()"><i class="fa fa-backward" aria-hidden="true"></i></button>
+                            <button onclick="nextPage()"><i class="fa fa-forward" aria-hidden="true"></i></button>
+                            <button onclick="lastPage()"><i class="fa fa-fast-forward" aria-hidden="true"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- second slide content -->
+                <div class="slide" id="slide2">
+                    <div class="content">
+                        <div class="sub-header">
+                            <div class="topic">Select a template</div>
+                            <div class="input-container">
+                                <select name="template" id="select-option" class="select-option">
+                                    <option value="false" selected>Select a template</option>
+                                    <option value="true">Template 1</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- show after selectoption select true -->
+                        <div class="change-template" id="change-template">
+                            <div class="content">
+                                <div class="topic">Views</div>
                                 <div class="input-container">
-                                    <select name="template" id="select-option" class="select-option">
-                                        <option value="false" selected>Select a template</option>
-                                        <option value="true">Template 1</option>
+                                    <select name="template" id="template" class="select-option">
+                                        <option value="" selected>Select a view</option>
+                                        <option value="view">View 1</option>
                                     </select>
                                 </div>
-                            </div>
 
-                            <!-- show after selectoption select true -->
-                            <div class="change-template" id="change-template">
-                                <div class="content">
-                                    <div class="topic">Views</div>
-                                    <div class="input-container">
-                                        <select name="template" id="template" class="select-option">
-                                            <option value="" selected>Select a view</option>
-                                            <option value="view">View 1</option>
-                                        </select>
+                                <div class="checks">
+                                    <div class="check-topics">
+                                        <div class="check-name1">Copy</div>
+                                        <div class="check-name2">Include Estimates</div>
                                     </div>
-
-                                    <div class="checks">
-                                        <div class="check-topics">
-                                            <div class="check-name1">Copy</div>
-                                            <div class="check-name2">Include Estimates</div>
+                                    <div class="check-content">
+                                        <div class="check-1">
+                                            <input type="checkbox" id="checkbox" name="copy-1" value="" checked>
+                                            <label for="copy-1"> Dates</label><br>
+                                            <input type="checkbox" id="checkbox" name="copy-2" value="" checked>
+                                            <label for="copy-2"> Status</label><br>
+                                            <input type="checkbox" id="checkbox" name="copy-3" value="" checked>
+                                            <label for="copy-3"> Billing Plans</label><br>
+                                            <input type="checkbox" id="checkbox" name="copy-4" value="" checked>
+                                            <label for="copy-4"> Activities</label><br>
+                                            <input type="checkbox" id="checkbox" name="copy-5" value="" checked>
+                                            <label for="copy-5"> Phase Quotes</label><br>
+                                            <input type="checkbox" id="checkbox" name="copy-6" value="" checked>
+                                            <label for="copy-6"> Stages</label><br>
                                         </div>
-                                        <div class="check-content">
-                                            <div class="check-1">
-                                                <input type="checkbox" id="checkbox" name="copy-1" value="" checked>
-                                                <label for="copy-1"> Dates</label><br>
-                                                <input type="checkbox" id="checkbox" name="copy-2" value="" checked>
-                                                <label for="copy-2"> Status</label><br>
-                                                <input type="checkbox" id="checkbox" name="copy-3" value="" checked>
-                                                <label for="copy-3"> Billing Plans</label><br>
-                                                <input type="checkbox" id="checkbox" name="copy-4" value="" checked>
-                                                <label for="copy-4"> Activities</label><br>
-                                                <input type="checkbox" id="checkbox" name="copy-5" value="" checked>
-                                                <label for="copy-5"> Phase Quotes</label><br>
-                                                <input type="checkbox" id="checkbox" name="copy-6" value="" checked>
-                                                <label for="copy-6"> Stages</label><br>
-                                            </div>
-                                            <div class="check-1">
-                                                <input type="checkbox" id="checkbox" name="is-1" value="" checked>
-                                                <label for="is-1"> Times</label><br>
-                                                <input type="checkbox" id="checkbox" name="is-2" value="" checked>
-                                                <label for="is-2"> Mateial</label><br>
-                                                <input type="checkbox" id="checkbox" name="is-3" value="" checked>
-                                                <label for="is-3"> Billing Plans</label><br>
-                                                <br><br>
-                                                <input type="checkbox" id="checkbox" name="is-4" value="" checked>
-                                                <label for="is-4"> Purchase</label><br>
-                                                <br>
-                                            </div>
-                                        </div>
-                                    </div>
-
-
-                                    <div class="phase-table">
-                                        <div class="phase-topic">
-                                            Phase to copy
-                                        </div>
-
-                                        <div class="phase-table1">
-                                            <table>
-                                                <thead>
-                                                    <th> </th>
-                                                    <th> phase </th>
-                                                    <th> description </th>
-                                                </thead>
-                                                <tbody>
-                                                    <tr>
-                                                        <td><input type="checkbox" name="" id=""></td>
-                                                        <td>001</td>
-                                                        <td>Phase Description</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><input type="checkbox" name="" id=""></td>
-                                                        <td>002</td>
-                                                        <td>Phase Description</td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
+                                        <div class="check-1">
+                                            <input type="checkbox" id="checkbox" name="is-1" value="" checked>
+                                            <label for="is-1"> Times</label><br>
+                                            <input type="checkbox" id="checkbox" name="is-2" value="" checked>
+                                            <label for="is-2"> Mateial</label><br>
+                                            <input type="checkbox" id="checkbox" name="is-3" value="" checked>
+                                            <label for="is-3"> Billing Plans</label><br>
+                                            <br><br>
+                                            <input type="checkbox" id="checkbox" name="is-4" value="" checked>
+                                            <label for="is-4"> Purchase</label><br>
+                                            <br>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                    </div>
 
-                    <!-- third slide content -->
-                    <div class="slide" id="slide3">
-                        <div class="sub-header">
-                            <div class="topic">Extra Option</div>
-                            <div class="input-container-check">
-                                <input type="checkbox" name="extra" id="extra" checked>
-                                <label for="extra">Own Job number</label>
-                            </div>
-                        </div>
 
-                        <div class="handler">
-                            <div class="topic">Handler</div>
-                            <div class="handler-table">
-                                <div>
-                                    <input type="radio" name="default" id="radio1" onclick="handleRadioClick('radio1')">
-                                    <label for="default">Client default Handler</label>
-                                </div>
-                                <div>
-                                    <input type="radio" name="user" id="radio2" onclick="handleRadioClick('radio2')">
-                                    <label for="user">Current User</label>
+                                <div class="phase-table">
+                                    <div class="phase-topic">
+                                        Phase to copy
+                                    </div>
+
+                                    <div class="phase-table1">
+                                        <table>
+                                            <thead>
+                                                <th> </th>
+                                                <th> phase </th>
+                                                <th> description </th>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td><input type="checkbox" name="" id=""></td>
+                                                    <td>001</td>
+                                                    <td>Phase Description</td>
+                                                </tr>
+                                                <tr>
+                                                    <td><input type="checkbox" name="" id=""></td>
+                                                    <td>002</td>
+                                                    <td>Phase Description</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
 
+                <!-- third slide content -->
+                <div class="slide" id="slide3">
+                    <div class="sub-header">
+                        <div class="topic">Extra Option</div>
+                        <div class="input-container-check">
+                            <input type="checkbox" name="extra" id="extra" checked>
+                            <label for="extra">Own Job number</label>
+                        </div>
+                    </div>
+
+                    <div class="handler">
+                        <div class="topic">Handler</div>
+                        <div class="handler-table">
+                            <div>
+                                <input type="radio" name="default" id="radio1" onclick="handleRadioClick('radio1')">
+                                <label for="default">Client default Handler</label>
+                            </div>
+                            <div>
+                                <input type="radio" name="user" id="radio2" onclick="handleRadioClick('radio2')">
+                                <label for="user">Current User</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
 
         </div>
 
         <!-- footer -->
         <div class="footer">
-            <div class="free"> </div>
-            <div class="carousel">
-                <div class="carousel-dots">
+            <div class="free">
+                <div class="dots-container">
                     <div class="dot"></div>
                     <div class="dot"></div>
                     <div class="dot"></div>
                 </div>
             </div>
+
             <div class="next-page-btn-div">
                 <button class="next-page-btn" onclick="nextSlide()" id="next-page-btn">Next</button>
             </div>
@@ -211,6 +209,8 @@
 
     <!-- custom script -->
     <script>
+
+
 
     </script>
 </body>
