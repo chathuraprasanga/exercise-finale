@@ -28,7 +28,10 @@ const pageSize = 5;
 let currentPage = 1;
 let slideIndex = 1;
 
-//send database data to html
+// Selected checkboxes - edited
+let selectedCheckboxes = [];
+
+// Send database data to HTML - updated
 function updateTable() {
     const table = document.getElementById("object-table");
     const start = (currentPage - 1) * pageSize;
@@ -38,15 +41,17 @@ function updateTable() {
 
     let tableContent = "<tr><th> </th><th>Organization</th><th>Code</th><th>Handler</th></tr>";
     for (let i = start; i < end && i < filteredObjects.length; i++) {
-        tableContent += `<tr><td><input type="checkbox" name="" id=""></td><td>${filteredObjects[i].organization}</td><td>${filteredObjects[i].code}</td><td>${filteredObjects[i].handler}</td></tr>`;
+        const isChecked = selectedCheckboxes.includes(filteredObjects[i].code);
+        tableContent += `<tr><td><input type="checkbox" name="selectedObject" id="${filteredObjects[i].code}" ${isChecked ? 'checked' : ''}></td><td>${filteredObjects[i].organization}</td><td>${filteredObjects[i].code}</td><td>${filteredObjects[i].handler}</td></tr>`;
     }
 
     table.innerHTML = tableContent;
     updatePaginationInfo();
     updateCloseButtonVisibility();
+    addCheckboxEventListeners();
 }
 
-// set pagination to database table
+// Set pagination to database table - updated
 function updatePaginationInfo() {
     const infoDiv = document.getElementById("pagination-info");
     const start = (currentPage - 1) * pageSize + 1;
@@ -93,10 +98,31 @@ function updateCloseButtonVisibility() {
     closeButton.style.display = getFilterInput() ? "block" : "none";
 }
 
-// Add event listeners for input changes
+// Add event listeners for input changes - updated
 document.getElementById("filter-input").addEventListener("input", function () {
+    currentPage = 1; 
     updateTable();
 });
+
+// Function to remember selected checkboxes - edited
+function addCheckboxEventListeners() {
+    const checkboxes = document.getElementsByName("selectedObject");
+    
+    checkboxes.forEach(checkbox => {
+        checkbox.addEventListener("change", function () {
+            if (this.checked) {
+                selectedCheckboxes.push(this.id);
+            } else {
+                selectedCheckboxes = selectedCheckboxes.filter(id => id !== this.id);
+            }
+        });
+    });
+}
+
+// Function to clear selected checkboxes - edited
+function clearSelectedCheckboxes() {
+    selectedCheckboxes = [];
+}
 
 // slide changing function
 function showSlides() {
