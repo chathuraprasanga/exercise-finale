@@ -124,7 +124,7 @@ body {
     width: 100%;
 }
 
-#filterInput {
+#filter-input {
     padding-right: 30px;
     width: 94%;
     border-radius: 15px;
@@ -214,7 +214,7 @@ td {
 
 
 // second slide
-.selectOption {
+.select-option {
     margin-top: 5px;
     padding-right: 30px;
     width: 100%;
@@ -228,6 +228,17 @@ td {
     padding: 10px;
     font-size: 14px;
     font-weight: bold;
+}
+
+.change-template {
+    opacity: 1;
+    position: relative;
+    overflow-y: auto;
+    height: 240px;
+}
+
+.changeTemplate::-webkit-scrollbar {
+    display: none;
 }
 
 .checks {
@@ -312,17 +323,6 @@ td {
     border: 1px solid #ddd;
     padding: 10px;
     border-radius: 10px;
-}
-
-.changeTemplate {
-    opacity: 1;
-    position: relative;
-    overflow-y: auto;
-    height: 240px;
-}
-
-.changeTemplate::-webkit-scrollbar {
-    display: none;
 }
 
 

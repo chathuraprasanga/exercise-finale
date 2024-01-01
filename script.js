@@ -77,12 +77,12 @@ function lastPage() {
 
 // filter function in data table
 function getFilterInput() {
-    return document.getElementById("filterInput").value.trim();
+    return document.getElementById("filter-input").value.trim();
 }
 
 // clear filter in search bar
 function clearFilter() {
-    document.getElementById("filterInput").value = "";
+    document.getElementById("filter-input").value = "";
     currentPage = 1;
     updateTable();
 }
@@ -94,7 +94,7 @@ function updateCloseButtonVisibility() {
 }
 
 // Add event listeners for input changes
-document.getElementById("filterInput").addEventListener("input", function () {
+document.getElementById("filter-input").addEventListener("input", function () {
     updateTable();
 });
 
@@ -137,22 +137,22 @@ function nextSlide() {
 // appear template function
 function handleOptionChange() {
     // Get the selected option value
-    var selectedOption = document.getElementById("selectOption").value;
+    var selectedOption = document.getElementById("select-option").value;
 
     // Hide all divs
     hideAllDivs();
 
     // Show the corresponding div based on the selected option
     if (selectedOption === "true") {
-        document.getElementById("changeTemplate").style.display = "block";
+        document.getElementById("change-template").style.display = "block";
     } else if (selectedOption === 'false') {
-        document.getElementById("changeTemplate").style.display = 'none';
+        document.getElementById("change-template").style.display = 'none';
     }
 }
 
 // Function to hide all divs
 function hideAllDivs() {
-    var allDivs = document.querySelector(".changeTemplate");
+    var allDivs = document.querySelector(".change-template");
     allDivs.style.display = "none";
 }
 
@@ -170,7 +170,7 @@ function handleRadioClick(selectedRadioId) {
 }
 
 
-document.getElementById("selectOption").addEventListener("change", handleOptionChange);
+document.getElementById("select-option").addEventListener("change", handleOptionChange);
 
 // Initial hideAllDivs 
 hideAllDivs();
